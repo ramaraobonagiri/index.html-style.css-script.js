@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusPulse AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+
+    <div class="logo">
+        <span>◉</span> CampusPulse <b>AI</b>
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#report">Report</a>
+        <a href="#track">Track</a>
+        <a href="#dashboard">Analytics</a>
+        <a href="#about">About</a>
+    </nav>
+
+    <button class="nav-btn" onclick="scrollToReport()">
+        Report Issue
+    </button>
+
+</header>
+
+
+<!-- HERO -->
+<section id="home" class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            AI + DATA SCIENCE CAMPUS PLATFORM
+        </div>
+
+        <h1>
+            Make Your Campus
+            <span>Smarter.</span>
+        </h1>
+
+        <p>
+            Report campus problems, let AI analyze their priority,
+            detect similar issues and track every solution in one place.
+        </p>
+
+        <div class="hero-buttons">
+            <button class="primary-btn" onclick="scrollToReport()">
+                Report an Issue →
+            </button>
+
+            <button class="secondary-btn" onclick="document.getElementById('dashboard').scrollIntoView()">
+                View Analytics
+            </button>
+        </div>
+
+        <div class="hero-stats">
+
+            <div>
+                <strong id="heroReports">128</strong>
+                <small>Reports</small>
+            </div>
+
+            <div>
+                <strong>94%</strong>
+                <small>Resolved</small>
+            </div>
+
+            <div>
+                <strong>4.8h</strong>
+                <small>Avg Response</small>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="hero-card">
+
+        <div class="ai-top">
+            <span>✦</span>
+            AI ANALYSIS
+        </div>
+
+        <h3>Issue detected</h3>
+
+        <p>
+            "Water leakage near Block B washroom"
+        </p>
+
+        <div class="analysis-row">
+            <span>Category</span>
+            <b>Maintenance</b>
+        </div>
+
+        <div class="analysis-row">
+            <span>Priority</span>
+            <b class="high">HIGH</b>
+        </div>
+
+        <div class="priority-bar">
+            <div></div>
+        </div>
+
+        <p class="ai-note">
+            Similar reports detected: 2
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+<section class="section">
+
+    <div class="section-title">
+        <span>HOW IT WORKS</span>
+        <h2>From problem to solution.</h2>
+        <p>Three simple steps powered by intelligent analysis.</p>
+    </div>
+
+    <div class="steps">
+
+        <div class="step-card">
+            <div class="step-number">01</div>
+            <h3>Report</h3>
+            <p>
+                Students submit a campus problem with location,
+                category and description.
+            </p>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">02</div>
+            <h3>AI Analysis</h3>
+            <p>
+                Our demo AI analyzes the issue and estimates
+                category, urgency and priority.
+            </p>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">03</div>
+            <h3>Track</h3>
+            <p>
+                Get a ticket ID and follow the issue until it
+                reaches resolved status.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- REPORT -->
+<section id="report" class="section report-section">
+
+    <div class="section-title left">
+        <span>SMART REPORTING</span>
+        <h2>What's happening on campus?</h2>
+        <p>Tell us about a problem. CampusPulse AI will analyze it.</p>
+    </div>
+
+    <div class="report-grid">
+
+        <form id="issueForm" class="form-card">
+
+            <label>
+                Issue Title
+                <input
+                    type="text"
+                    id="issueTitle"
+                    placeholder="Example: Water leakage near block B"
+                    required
+                >
+            </label>
+
+            <div class="two-input">
+
+                <label>
+                    Category
+
+                    <select id="category">
+                        <option value="Auto">Auto Detect</option>
+                        <option value="Infrastructure">Infrastructure</option>
+                        <option value="Water">Water</option>
+                        <option value="Electricity">Electricity</option>
+                        <option value="Cleanliness">Cleanliness</option>
+                        <option value="Internet">Internet</option>
+                        <option value="Safety">Safety</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                </label>
+
+                <label>
+                    Location
+
+                    <select id="location">
+
+                        <option>Block A</option>
+                        <option>Block B</option>
+                        <option>Block C</option>
+                        <option>Library</option>
+                        <option>Laboratory</option>
+                        <option>Canteen</option>
+                        <option>Hostel</option>
+                        <option>Parking</option>
+
+                    </select>
+
+                </label>
+
+            </div>
+
+            <label>
+                Description
+
+                <textarea
+                    id="description"
+                    rows="5"
+                    placeholder="Describe the problem..."
+                    required
+                ></textarea>
+
+            </label>
+
+            <label>
+                How urgent is this?
+
+                <div class="urgency">
+
+                    <button type="button" class="urgency-btn" data-value="Low">
+                        Low
+                    </button>
+
+                    <button type="button" class="urgency-btn active" data-value="Medium">
+                        Medium
+                    </button>
+
+                    <button type="button" class="urgency-btn" data-value="High">
+                        High
+                    </button>
+
+                </div>
+
+            </label>
+
+            <button class="submit-btn" type="submit">
+                ✦ Analyze & Submit
+            </button>
+
+        </form>
+
+
+        <!-- AI RESULT -->
+
+        <div class="ai-result" id="aiResult">
+
+            <div class="result-placeholder">
+
+                <div class="big-icon">✦</div>
+
+                <h3>AI Analysis</h3>
+
+                <p>
+                    Submit an issue and the AI analysis
+                    will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TRACK -->
+<section id="track" class="section track-section">
+
+    <div class="section-title">
+
+        <span>TRACK YOUR ISSUE</span>
+
+        <h2>Where is my report?</h2>
+
+        <p>Enter your CampusPulse ticket ID.</p>
+
+    </div>
+
+    <div class="track-box">
+
+        <input
+            type="text"
+            id="ticketInput"
+            placeholder="Example: CP-1024"
+        >
+
+        <button onclick="trackTicket()">
+            Track →
+        </button>
+
+    </div>
+
+    <div id="trackingResult"></div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="section dashboard-section">
+
+    <div class="section-title left">
+
+        <span>DATA INSIGHTS</span>
+
+        <h2>Campus Analytics</h2>
+
+        <p>
+            A live view of campus issues and their status.
+        </p>
+
+    </div>
+
+
+    <div class="dashboard-cards">
+
+        <div class="dashboard-card">
+            <span>Total Reports</span>
+            <strong id="totalReports">128</strong>
+            <small>↑ 12% this month</small>
+        </div>
+
+        <div class="dashboard-card">
+            <span>Resolved</span>
+            <strong>120</strong>
+            <small>94% resolution rate</small>
+        </div>
+
+        <div class="dashboard-card">
+            <span>High Priority</span>
+            <strong>17</strong>
+            <small>Needs attention</small>
+        </div>
+
+        <div class="dashboard-card">
+            <span>Avg Response</span>
+            <strong>4.8h</strong>
+            <small>↓ 18% faster</small>
+        </div>
+
+    </div>
+
+
+    <div class="charts">
+
+        <div class="chart-card">
+
+            <h3>Issues by Category</h3>
+
+            <canvas id="categoryChart"></canvas>
+
+        </div>
+
+        <div class="chart-card">
+
+            <h3>Issue Status</h3>
+
+            <canvas id="statusChart"></canvas>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section id="about" class="section about-section">
+
+    <div class="section-title">
+
+        <span>ABOUT THE PROJECT</span>
+
+        <h2>Built with AI + Data Science.</h2>
+
+        <p>
+            CampusPulse AI demonstrates how intelligent systems
+            can convert unstructured student reports into useful
+            campus insights.
+        </p>
+
+    </div>
+
+    <div class="data-flow">
+
+        <div>Student Data</div>
+        <span>→</span>
+        <div>Preprocessing</div>
+        <span>→</span>
+        <div>AI Analysis</div>
+        <span>→</span>
+        <div>Priority</div>
+        <span>→</span>
+        <div>Analytics</div>
+
+    </div>
+
+    <div class="tech-list">
+
+        <span>HTML5</span>
+        <span>CSS3</span>
+        <span>JavaScript</span>
+        <span>Chart.js</span>
+        <span>AI Logic</span>
+        <span>Data Analytics</span>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <div>
+        <strong>CampusPulse AI</strong>
+        <p>Smarter campus. Better solutions.</p>
+    </div>
+
+    <div>
+        <p>AI & Data Science Student Project</p>
+        <p>© 2026 CampusPulse AI</p>
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
